@@ -23,11 +23,11 @@ public class PersonsRepository {
         return personList.stream().filter(person -> person.getCityOfLiving().equals(city)).toList();
     }
 
-//    public List<String> getProductName(String name) {
-//        var parameters = new HashMap<String, String>();
-//        parameters.put("name", name);
-//        return namedParameterJdbcTemplate.queryForList(script, parameters, String.class);
-//    }
+    public List<String> getProductName(String name) {
+        return entityManager.createQuery(
+                "select order.productName from Person where personalData.name = : name",
+                String.class).setParameter("name", name).getResultList();
+    }
 
     private static String read(String scriptFileName) {
         try (InputStream is = new ClassPathResource(scriptFileName).getInputStream();

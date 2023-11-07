@@ -21,8 +21,8 @@ public class DbController {
         return personsRepository.getPersonsByCity(city);
     }
 
-//    @GetMapping("/products/fetch-product")
-//    public List<String> getProductName(@RequestParam String name) {
-//        return personsRepository.getProductName(name);
-//    }
+    @GetMapping("/products/fetch-product")
+    public List<String> getProductName(@RequestParam String name) {
+        return personsRepository.getProductName(name);
+    }
 }
