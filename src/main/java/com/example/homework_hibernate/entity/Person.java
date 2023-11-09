@@ -1,9 +1,6 @@
 package com.example.homework_hibernate.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -22,4 +19,7 @@ public class Person {
 
     @Column(nullable = false)
     private String cityOfLiving;
+
+    @OneToOne(optional = false)
+    private Order order;
 }
