@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class DbController {
@@ -18,11 +19,17 @@ public class DbController {
 
     @GetMapping("/persons/by-city")
     public List<Person> getPersonsByCity(@RequestParam String city) {
-        return personsRepository.getPersonsByCity(city);
+        return personsRepository.findByCityOfLiving(city);
     }
 
-    @GetMapping("/products/fetch-product")
-    public List<String> getProductName(@RequestParam String name) {
-        return personsRepository.getProductName(name);
+
+    @GetMapping("/persons/by-age")
+    public List<Person> getPersonsByCity(@RequestParam Integer age) {
+        return personsRepository.findPersonByPersonalData_Age(age);
+    }
+
+    @GetMapping("/persons/by-name-surname")
+    public Optional<Person> getPersonsByNameAndSurname(@RequestParam String name, String surname) {
+        return personsRepository.findPersonByPersonalData_NameAndPersonalData_Surname(name, surname);
     }
 }
